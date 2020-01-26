@@ -1,0 +1,11 @@
+
+# ignore files
+*.csv
+*.xlsx
+
+
+# ignore useless files
+#uninstall.*
+
+# Ignore enrtire directory
+/target/
