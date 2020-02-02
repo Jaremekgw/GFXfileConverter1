@@ -28,7 +28,9 @@ public class Controller {
     }
 
     public void read(File file) {
-        final int timeStep = 50;
+        //  final int timeStep = 50;    // wczesniej było 50ms
+        final int timeStep = 20;        // chciałem to zrobić automatycznie z pliku "F20"
+        
         int time;       // time stamp [ms] for each measure
         int rb;         // read byte
         int currPos;    // current position in measurement
@@ -47,16 +49,27 @@ public class Controller {
                 // convert main letter to position in measurement
                 newPos = switch (rb) {
                     case 'R' -> 1;      // acceleration, direct value
-                    case 'S' -> 2;      // acceleration, filtered value
+                    case 'S' -> 1;      // acceleration, filtered value
+                    case 'X' -> 2;      // duty % set to motor
                     case 'Q' -> 3;      // shaft position
                     case 'T' -> 4;      // speed with driver correction
-                    case 'U' -> 5;      // raw speed value
+                    //case 'U' -> 4;      // raw speed value
+                    case 'D' -> 5;      // differences for acc to calculate min/max
                     case 'W' -> 6;      // round time period
-                    case 'D' -> 7;      // duty value, change
+                    case 'A' -> 7;      // duty value, change
+                    case 'F' -> 9;      // okres czasu pomiaru przyspieszenia acc
                     case '0','1','2','3','4','5','6','7','8','9'
                             -> 0;
+                    case '-' -> 100;
                     default -> -1;
                 };
+
+                if (newPos == 100) {
+                    if ( (currPos > 0) && vStr.length() == 0 )
+                        newPos = 0;
+                    else
+                        newPos = -1;
+                }
 
                 if (currPos == 0) {
                     if (newPos > 0)
@@ -151,8 +164,8 @@ public class Controller {
 
     void calculate() {
         /* calculate additional values for better analyse */
-        data.calc_acc(1, 10);       // 'R'
-        data.calc_shaft(3, 11);     // 'Q'
+        data.calc_acc(1, 10);       // 'R' 'S'  ->  10      przelicza odchylenie od średniej
+        data.calc_shaft(3, 11);     // 'Q'  ->  11          przelicza pozycje 'n' na pozycję obrotową [+250...-250]
 
     }
     

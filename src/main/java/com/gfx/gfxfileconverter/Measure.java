@@ -112,7 +112,7 @@ public class Measure {
             rad = MAX_SHAFT_POSITION;
 
         rad /= MAX_SHAFT_POSITION;
-        level = (Math.sin(rad * Math.PI) - 0.5) * MAX_SHAFT_RANGE;
+        level = Math.cos(rad * 2 * Math.PI) * MAX_SHAFT_RANGE;
         
         //      x/110
         //    =J$295 *-1* (0,5 - SIN(PI()*D431/111))
