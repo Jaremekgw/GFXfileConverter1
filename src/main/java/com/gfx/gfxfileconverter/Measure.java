@@ -5,6 +5,9 @@
  */
 package com.gfx.gfxfileconverter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 /**
  *
@@ -123,5 +126,16 @@ public class Measure {
         put++;
         if (size < put)
             size = put;        
+    }
+
+    List<Integer> getIntegerList() {
+        List<Integer> list = new ArrayList<>();
+        for (int i = 0; i < size; i++) {
+            if (elements[i] != null)
+                list.add(Integer.valueOf(elements[i]));
+            else
+                list.add(null);
+        }
+        return list;
     }
 }

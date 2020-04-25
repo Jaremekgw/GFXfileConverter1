@@ -1,0 +1,52 @@
+
+dla pol14_01.xlsx często speed period był mniejszy niż 18 i robił wiele obrotów na fade zanim wyłączył silnik, a na końcu silnik się nie wyłączał
+* mamy 2 pełne obroty zanim przeszedł w fade, dla linii w excell:  939; 1861;
+* mamy dziwne zakończenia pracy (przejście w fade) dla shaft 66#4635; 66#6961; 64#9467
+
+1. co powoduje wyłączanie najczęściej przy shaft około 70
+	#45		szukam fragmentu w txt:	S4705 Q81
+		S4755R921
+			Q79 P-2I100 T8J-1 P-2I100 T9J0
+		S4705R452
+			Q81 P-2I100 T8J-1 
+				H0T9J0 H-350T9J50 H-350T9J100 H-350T9J150 H-350T9J200 H-350T9J250 H-350T9J300 H-350T9J350 H-350T9J400		- tu przeskoczył na FADE ale (*)
+		S4613R269 
+				H0T9J0 H-350T9J50 H-350T9J100 H-350T9J150 H-350T9J200 H-350T9J250 H-350T9J300 H-350T9J350 H-350T9J400
+			Q84
+				H0T9J0 H-350T9J50 H-350T9J100 H-350T9J150 H-350T9J200 H-350T9J250 H-350T9J300 H-350T9J350 H-350T9J400 H0T9J0 H-350T9J50
+		S4475R482
+				H-350T9J100 H-350T9J150 H-350T9J200 H-350T9J250 H-350T9J300 H-350T9J350 H-350T9J400 H-350T9J450
+			Q86
+	(*) dlaczego H wywoływane jest co 1ms i widać że za każdym razem J jest zwiększane o 50, powinno się zwiększać co 120 lub 80 ms
+		
+
+2. sprawdzić i poprawić fade, przynajmniej wyświetlanie speed, patrz linie 357 w excel
+
+
+
+dla pol14_02.xlsx  wyłączone zostało "if (period > 18)" dlatego po wykryciu shaft 70 wyłączał od razu
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

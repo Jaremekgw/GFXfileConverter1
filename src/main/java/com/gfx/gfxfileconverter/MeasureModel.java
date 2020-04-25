@@ -112,8 +112,8 @@ public class MeasureModel {
      * Calculate acceleration,
      *  decrease value for offset to get middle point on level near 0
      * 
-     * @param get
-     * @param put 
+     * @param get       column number to get data for calculating
+     * @param put       column number for put results of calculation
      */
     void calc_acc(int get, int put) {
         long sum = 0;
@@ -154,6 +154,10 @@ public class MeasureModel {
         if (put + 1 > amount)
             amount = put + 1;
         label[put] = "shaft";
+    }
+
+    List<Integer> getIntegerList(int i) {        
+        return (table.get(i).getIntegerList());
     }
 
 }

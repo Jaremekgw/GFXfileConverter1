@@ -1,0 +1,28 @@
+
+
+
+
+
+
+
+
+
+	MOT_Task()
+		-> _mot_TrigShaftPosition();	// Wszystkie procedury związane z wykryciem kolejnego impulsu na wale		
+			-> calculateSynchronisation();
+
+	MOT_Task()
+		-> motorData.setSpeed = _mot_AccCalculate(&acceleration);
+			-> return _mot_AnalyseAcc(acc);
+				-> return _mot_setCalculatePoint(buf);
+					-> setSpeed = calculateSynchronisation();
+
+	2020-04-09
+		zmienic zeby procedura 'calculateSynchronisation()' ustawiała zadany czas przejscia w zmiennej globalnej
+		a potem osobna procedura przed ustawieniem predkosci modyfikowala 'setSpeed' w zaleznosci od wartosci globalnej
+		i innych parametrów, na przykład od timer
+
+
+
+
+	_mot_SpeedChange()

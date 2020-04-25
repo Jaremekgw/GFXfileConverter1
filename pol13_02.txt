@@ -1,0 +1,171 @@
+problem z lacznoscia, sprawdzic program pod tym kontem.
+
+ >slan ve * ism: log_Allow.*
+
+ ----- Slave variables: -----
+ modeA-B  = 0-0  status = 0x0000
+   ----------
+ mON:n  fan:n  pause:n  Belt:n  Drv:n  Temp:n  Water:n  Supp:n
+ errTemp2.5:n  errHigr2.6:n  erTempModule:n
+ --------
+ mot. temp. = 34,4
+ supply volt= 3
+ water an.  = 0
+ ball temp. = 28,4
+ ball humid = 32,1
+ mod. temp. = 25,2
+ mod. humid = 51,8
+ rot. Time  = 0
+ rot. Diff  = 0
+ r.Measures = 0
+ > * ism: notLog Config-Master*
+ * mdb: Receive configB.*
+ * mdb: Receive configA.*
+ ---- Motor Start working - PAUSE ----.
+* MOTOR Mspeed STOP - autoAllow *
+ * mdb: Receive configB.*
+ * appSlave: send InfoA.*
+ * appSlave: send InfoB.*
+ * mdb: Receive configB.*
+ * appSlave: send InfoB.*
+!
+ -- Wrong command or argument. --
+ >
+ -- Wrong command or argument. --
+ > * appSlave: send InfoA.*
+ #timeout.
+ * appSlave: send InfoA.*
+ * ism: rec logOut.*
+ * appSlave: ---- Motor Stop working ----.*
+
+ > * ism: log_Allow.*
+ ---- Motor Start working - PAUSE ----.
+ * appSlave: send InfoB.*
+d * mdb: Receive configA.*
+ * mdb: Receive configB.*
+ * appSlave: send InfoA.*
+ * appSlave: send InfoB.*
+g * mdb: Receive configB.*
+ * appSlave: send InfoB.*
+ a    config
+ ----- Configuration variables: -----
+ modeA-B  = 6-6
+ update A-B  = 0-0
+ time safe   = 3000
+ max accel.  = 3200
+ max swing   = 3800
+ nom. speed  = 8
+ synchro.    = 0
+ time on     = 10
+ time pause  = 10
+ > * appSlave: send InfoA.*
+slave
+ ----- Slave variables: -----
+ modeA-B  = 6-6  status = 0x1082
+   ----------
+ mON:Y  fan:Y  pause:n  Belt:n  Drv:n  Temp:n  Water:n  Supp:Y
+ errTemp2.5:n  errHigr2.6:n  erTempModule:n
+ --------
+ mot. temp. = 34,1
+ supply volt= 886
+ water an.  = 0
+ ball temp. = 28,7
+ ball humid = 32,4
+ mod. temp. = 26,3
+ mod. humid = 52,2
+ rot. Time  = 0
+ rot. Diff  = 0
+ r.Measures = 0
+ > * appSlave: send InfoA.*
+ #timeout.
+config * appSlave: send InfoB.*
+
+ >slave
+ ----- Slave variables: -----
+ modeA-B  = 6-6  status = 0x1082
+   ----------
+ mON:Y  fan:Y  pause:n  Belt:n  Drv:n  Temp:n  Water:n  Supp:Y
+ errTemp2.5:n  errHigr2.6:n  erTempModule:n
+ --------
+ mot. temp. = 34,1
+ supply volt= 889
+ water an.  = 0
+ ball temp. = 28,7
+ ball humid = 33,3
+ mod. temp. = 26,5
+ mod. humid = 51,7
+ rot. Time  = 0
+ rot. Diff  = 0
+ r.Measures = 0
+ > * appSlave: send InfoC.*
+!
+ -- Wrong command or argument. --
+ >
+ -- Wrong command or argument. --
+ >
+ -- Wrong command or argument. --
+ > * appSlave: send InfoD.*
+ * ism: rec logOut.*
+ * appSlave: ---- Motor Stop working ----.*
+
+ -- Wrong command or argument. --
+ >
+ -- Wrong command or argument. --
+ >
+ -- Wrong command or argument. --
+ >
+ -- Wrong command or argument. --
+ > * ism: log_Allow.*
+ * ism: log_Allow.*
+ * ism: log_Allow.*
+ #timeout.
+ ---- Motor Start working - PAUSE ----.
+ * appSlave: send InfoA.*
+ * ism: rec logIn.*
+ * mdb: Receive configA.*
+ * mdb: Receive configB.*
+ * appSlave: send InfoA.*
+ * appSlave: send InfoB.*
+ * ism: rec logStamp.*
+ * ism: rec logStamp.*
+ * ism: rec logStamp.*
+ * ism: rec logStamp.*
+ * ism: rec logIn.*
+ * mdb: Receive configB.*
+ * appSlave: send InfoB.*
+ * ism: rec logIn.*
+ * mdb: Receive configB.*
+ * appSlave: send InfoB.*
+ * ism: rec logIn.*
+ * ism: rec logStamp.*
+ * ism: rec logStamp.*
+ * ism: rec logStamp.*
+ * ism: rec logIn.*
+ * mdb: Receive configB.*
+ * appSlave: send InfoB.*
+ * ism: rec logIn.*
+ * mdb: Receive configB.*
+ * appSlave: send InfoB.*
+ * ism: rec logStamp.*
+ * ism: rec logStamp.*
+ * ism: rec logStamp.*
+ * ism: rec logIn.*
+ * mdb: Receive configB.*
+ * appSlave: send InfoB.*
+ * mdb: Receive configB.*
+ * appSlave: send InfoB.*
+ * mdb: Receive configB.*
+ * appSlave: send InfoB.*
+ * ism: rec logIn.*
+ * ism: rec logStamp.*
+ * ism: rec logStamp.*
+ * ism: rec logStamp.*
+ * ism: rec logIn.*
+ * mdb: Receive configB.*
+ * appSlave: send InfoB.*
+ * mdb: Receive configB.*
+ * appSlave: send InfoB.*
+ * ism: rec logIn.*
+ * appSlave: send InfoA.*
+ * ism: rec logOut.*
+ * appSlave: ---- Motor Stop working ----.*
